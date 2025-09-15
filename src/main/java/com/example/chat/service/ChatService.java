@@ -26,7 +26,14 @@ public class ChatService {
         try {
             ChatRequest request = new ChatRequest(
                     "openai/gpt-4o-mini",
-                    List.of(new ChatRequest.Message("user", message))
+                    List.of(
+                            new ChatRequest.Message("system",
+                                    "Ты — помощник стриминг-сервиса CineMax. " +
+                                            "Отвечай ТОЛЬКО на вопросы о сервисе. " +
+                                            "Если вопрос не про CineMax — отвечай: " +
+                                            "'Извините, я могу отвечать только на вопросы про CineMax.'"),
+                            new ChatRequest.Message("user", message)
+                    )
             );
 
             ChatResponse response = webClient.post()
