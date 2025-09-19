@@ -14,8 +14,12 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173") // порт Vite
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+                        .allowedOrigins(
+                                "http://localhost:5173",
+                                "https://c4ac1aa93b0c.ngrok-free.app/"
+                        )
+                        .allowedMethods("*")
+                        .allowCredentials(true);
             }
         };
     }
